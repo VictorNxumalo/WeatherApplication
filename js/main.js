@@ -1,25 +1,40 @@
 // Function to fetch weather data from 7Timer! API
 async function fetchWeather(lat, lon) {
-    const currentWeatherEndpoint = `https://www.7timer.info/bin/api.pl?lon=${lon}&lat=${lat}&product=civil&output=json`;
-    const currentWeatherResponse = await fetch(currentWeatherEndpoint);
-    
-
     try {
-        const response = await fetch(endpoint);
-
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        // Use OpenWeatherMap API for current weather instead of 7timer
+        const apiKey = 'bf9b579ef496aea7f99616a000892409';
+        const currentWeatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+        const currentWeatherResponse = await fetch(currentWeatherEndpoint);
+        
+        if (!currentWeatherResponse.ok) {
+            throw new Error(`Error: ${currentWeatherResponse.status}`);
         }
+        
+        const currentWeatherData = await currentWeatherResponse.json();
+        
+        // Transform OpenWeatherMap data to match your UI expectations
+        const transformedData = {
+            dataseries: [{
+                temp2m: Math.round(currentWeatherData.main.temp),
+                weather: currentWeatherData.weather[0].main,
+                wind10m: {
+                    speed: Math.round(currentWeatherData.wind.speed * 3.6) // Convert m/s to km/h
+                },
+                rh2m: currentWeatherData.main.humidity
+            }]
+        };
+        
+        updateWeatherUI(transformedData);
 
-        const data = await response.json();
-        console.log(data); // Log the data for debugging
-        updateWeatherUI(data);
+        // Fetch forecast data
+        const forecastData = await getForecastData(lat, lon);
+        displayForecast(forecastData);
+
     } catch (error) {
         console.error('Failed to fetch weather data:', error);
         alert('Could not fetch weather data. Please try again.');
     }
 }
-
 // Function to fetch coordinates by city name
 async function fetchCoordinates(city) {
     const apiKey = 'bf9b579ef496aea7f99616a000892409';
