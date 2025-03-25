@@ -165,8 +165,9 @@ function createForecastCard(forecast) {
 }
 async function fetchWeather(lat, lon) {
     try {
-        // Fetch current weather
-        const currentWeatherEndpoint = `http://www.7timer.info/bin/api.pl?lon=${lon}&lat=${lat}&product=civil&output=json`;
+        // Use OpenWeatherMap API for current weather instead of 7timer
+        const apiKey = 'bf9b579ef496aea7f99616a000892409';
+        const currentWeatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
         const currentWeatherResponse = await fetch(currentWeatherEndpoint);
         
         if (!currentWeatherResponse.ok) {
@@ -174,7 +175,20 @@ async function fetchWeather(lat, lon) {
         }
         
         const currentWeatherData = await currentWeatherResponse.json();
-        updateWeatherUI(currentWeatherData);
+        
+        // Transform OpenWeatherMap data to match your UI expectations
+        const transformedData = {
+            dataseries: [{
+                temp2m: Math.round(currentWeatherData.main.temp),
+                weather: currentWeatherData.weather[0].main,
+                wind10m: {
+                    speed: Math.round(currentWeatherData.wind.speed * 3.6) // Convert m/s to km/h
+                },
+                rh2m: currentWeatherData.main.humidity
+            }]
+        };
+        
+        updateWeatherUI(transformedData);
 
         // Fetch forecast data
         const forecastData = await getForecastData(lat, lon);
@@ -202,18 +216,16 @@ function displayForecast(data) {
 }
 // Add this to js/main.js
 const weatherIcons = {
-    'clear': 'images/clear.png',
-    'pcloudy': 'images/pcloudy.png',
-    'mcloudy': 'images/mcloudy.png',
-    'cloudy': 'images/cloudy.png',
-    'rain': 'images/rain.png',
-    'snow': 'images/snow.png',
-    'tsrain': 'images/tsrain.png',
+    'Clear': 'images/clear.png',
+    'Clouds': 'images/cloudy.png',
+    'Rain': 'images/rain.png',
+    'Snow': 'images/snow.png',
+    'Thunderstorm': 'images/tsrain.png',
     'default': 'images/cloudy.png'
 };
 
 function getWeatherIcon(condition) {
-    return weatherIcons[condition.toLowerCase()] || weatherIcons.default;
+    return weatherIcons[condition] || weatherIcons.default;
 }
 
 // Update the updateWeatherUI function to include weather icons
