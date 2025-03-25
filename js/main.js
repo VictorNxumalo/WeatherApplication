@@ -1,6 +1,8 @@
 // Function to fetch weather data from 7Timer! API
 async function fetchWeather(lat, lon) {
-    const endpoint = `http://www.7timer.info/bin/api.pl?lon=${lon}&lat=${lat}&product=civil&output=json`;
+    const currentWeatherEndpoint = `https://www.7timer.info/bin/api.pl?lon=${lon}&lat=${lat}&product=civil&output=json`;
+    const currentWeatherResponse = await fetch(currentWeatherEndpoint);
+    
 
     try {
         const response = await fetch(endpoint);
@@ -21,7 +23,7 @@ async function fetchWeather(lat, lon) {
 // Function to fetch coordinates by city name
 async function fetchCoordinates(city) {
     const apiKey = 'bf9b579ef496aea7f99616a000892409';
-    const endpoint = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+    const endpoint = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
     const loadingSpinner = document.querySelector('#search-loading');
     const searchButton = document.querySelector('#search-button span');
     const searchInput = document.querySelector('#city-name');
@@ -149,16 +151,17 @@ function createForecastCard(forecast) {
     const description = forecast.weather[0].description;
     const icon = forecast.weather[0].icon;
 
-    return `
-        <div class="snap-center min-w-[200px] bg-white/20 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white/20 hover:transform hover:scale-105 transition-all">
-            <div class="text-center">
-                <h3 class="text-lg font-semibold text-white mb-2">${dayName}</h3>
-                <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="${description}" class="w-16 h-16 mx-auto">
-                <p class="text-2xl font-bold text-white mb-2">${temp}°C</p>
-                <p class="text-sm text-gray-200 capitalize">${description}</p>
-            </div>
-        </div>
-    `;
+     // Change http:// to https://
+     return `
+     <div class="snap-center min-w-[200px] bg-white/20 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white/20 hover:transform hover:scale-105 transition-all">
+         <div class="text-center">
+             <h3 class="text-lg font-semibold text-white mb-2">${dayName}</h3>
+             <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${description}" class="w-16 h-16 mx-auto">
+             <p class="text-2xl font-bold text-white mb-2">${temp}°C</p>
+             <p class="text-sm text-gray-200 capitalize">${description}</p>
+         </div>
+     </div>
+ `;
 }
 async function fetchWeather(lat, lon) {
     try {
