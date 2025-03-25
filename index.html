@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+<!-- OpenLayers -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css">
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
+
+<!-- TsParticles -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css">
+        <script
+            src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
+        <!-- Add this for Font Awesome -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Custom CSS -->
+
+        <!-- Add this in the <head> section -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lato:wght@300;400&display=swap"
+            rel="stylesheet">
+
+        <title>Weather API Project</title>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/ol3/3.20.1/ol.css">
+        <script src="https://cdn.jsdelivr.net/ol3/3.20.1/ol.js"></script>
+
+    </head>
+
+    <body
+        class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 min-h-screen relative overflow-x-hidden">
+        <!-- Add this animated background gradient -->
+        <div
+            class="fixed inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-blue-500/20 animate-gradient-xy"></div>
+
+        <!-- Add this particle effect overlay -->
+        <div class="fixed inset-0 bg-black/20"></div>
+
+        <!-- Wrap all content in a container with glass effect -->
+        <div class="relative">
+            <!-- Your existing content here -->
+            <main class="container mx-auto px-4 py-8">
+                <!-- Add glass effect to all major sections -->
+                <div
+                    class="backdrop-blur-lg bg-white/10 rounded-3xl shadow-2xl border border-white/20 p-8 mb-8">
+                    <!-- Your existing content -->
+                    <header
+                        class="relative bg-gradient-to-r from-indigo-500 to-blue-500 text-white py-20 overflow-hidden">
+                        <!-- Particle Background -->
+                        <div id="tsparticles"
+                            class="absolute inset-0 z-0"></div>
+
+                        <!-- Animated Sun -->
+                        <div
+                            class="absolute top-10 left-10 w-32 h-32 bg-yellow-400 rounded-full animate-sun-pulse shadow-lg"></div>
+
+                        <!-- Text Content -->
+                        <div
+                            class="container mx-auto px-4 text-center relative z-10">
+                            <h1
+                                class="text-4xl font-bold mb-4 drop-shadow-lg">Welcome
+                                to
+                                WeatherApp</h1>
+                            <p class="text-lg mb-6 drop-shadow-lg">Get accurate
+                                and
+                                up-to-date weather forecasts for your city.</p>
+                            <!-- <a href="#search"
+                                class="px-8 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-all">
+                                Get Started
+                            </a> -->
+                        </div>
+                        <!-- Add this where you want the portfolio button to appear -->
+                        <div class="flex justify-center my-8">
+                            <a
+                                href="https://l.instagram.com/?u=https%3A%2F%2Fvictornxumalo.github.io%2FVictorNxumaloPortfolio%2F%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAaYg3tpkOqyM1QuYhy6XHYZZufmtmL6fMw2THr-w7UuZKcc7bGC5XuDh4kk_aem_vS4W63dQIXMibmmISgMOeg&e=AT2YtByUlPBXjRDqrzbaCW8qM0F9d7fMwSbSyqwAo9a6eg3sGIfImPA146AL2v4zNiRq5Hke7EPrSSmJIS1la-gRvMGA9W2xOABVZk8"
+                                class="portfolio-btn group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-bold rounded-lg text-white transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl">
+                                <!-- Animated background -->
+                                <span
+                                    class="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-xy"></span>
+                                <!-- Glowing effect -->
+                                <span
+                                    class="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></span>
+                                <!-- Particle effects -->
+                                <span
+                                    class="particle-container absolute inset-0 overflow-hidden">
+                                    <span class="particle"></span>
+                                    <span class="particle"></span>
+                                    <span class="particle"></span>
+                                </span>
+                                <!-- Button content -->
+                                <span class="relative flex items-center gap-2">
+                                    <svg class="w-6 h-6 animate-bounce"
+                                        fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    Click to View Creator Portfolio
+                                    <svg class="w-6 h-6 animate-pulse"
+                                        fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+
+                        <style>
+                            /* Portfolio button animations */
+                            .portfolio-btn {
+                                transform-style: preserve-3d;
+                                backface-visibility: hidden;
+                            }
+                        
+                            .animate-gradient-xy {
+                                animation: gradient-xy 15s ease infinite;
+                                background-size: 400% 400%;
+                            }
+                        
+                            @keyframes gradient-xy {
+                                0%, 100% {
+                                    background-position: 0% 0%;
+                                }
+                                25% {
+                                    background-position: 100% 0%;
+                                }
+                                50% {
+                                    background-position: 100% 100%;
+                                }
+                                75% {
+                                    background-position: 0% 100%;
+                                }
+                            }
+                        
+                            .particle {
+                                position: absolute;
+                                width: 4px;
+                                height: 4px;
+                                background: white;
+                                border-radius: 50%;
+                                animation: particle-animation 3s ease-in-out infinite;
+                            }
+                        
+                            .particle:nth-child(1) {
+                                left: 10%;
+                                animation-delay: 0s;
+                            }
+                        
+                            .particle:nth-child(2) {
+                                left: 50%;
+                                animation-delay: 0.5s;
+                            }
+                        
+                            .particle:nth-child(3) {
+                                left: 90%;
+                                animation-delay: 1s;
+                            }
+                        
+                            @keyframes particle-animation {
+                                0%, 100% {
+                                    transform: translateY(-50%) scale(0);
+                                    opacity: 0;
+                                }
+                                50% {
+                                    transform: translateY(-100%) scale(1);
+                                    opacity: 0.8;
+                                }
+                            }
+                        
+                            /* Hover effect */
+                            .portfolio-btn:hover {
+                                transform: translateY(-2px);
+                                box-shadow: 0 20px 80px -10px rgba(66, 71, 91, 0.25);
+                            }
+                        
+                            .portfolio-btn:hover::before {
+                                opacity: 1;
+                            }
+                        
+                            /* Glass effect on hover */
+                            .portfolio-btn::before {
+                                content: '';
+                                position: absolute;
+                                inset: 0;
+                                background: linear-gradient(
+                                    225deg,
+                                    rgba(255, 255, 255, 0.4) 0%,
+                                    rgba(255, 255, 255, 0.1) 100%
+                                );
+                                border-radius: inherit;
+                                opacity: 0;
+                                transition: opacity 0.3s ease;
+                            }
+                        </style>
+                    </header>
+
+                    <!-- Include tsparticles Library -->
+                    <script
+                        src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
+                    <script>
+            // Initialize tsparticles
+            tsParticles.load("tsparticles", {
+                fullScreen: { enable: false }, // Disable fullscreen to fit inside the hero section
+                particles: {
+                    number: {
+                        value: 650, // Number of particles
+                        density: { enable: true, value_area: 1000 }
+                    },
+                    color: { value: "#ffffff" }, // Particle color
+                    shape: {
+                        type: "star", // Shape of particles
+                        stroke: { width: 0, color: "#000000" }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                    },
+                    size: {
+                        value: 2,
+                        random: true,
+                        anim: { enable: true, speed: 10, size_min: 0.1, sync: false }
+                    },
+                    move: {
+                        enable: true,
+                        speed: 4,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: { enable: false, rotateX: 600, rotateY: 1200 }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" }, // Particles move away on hover
+                        onclick: { enable: true, mode: "push" }, // Add particles on click
+                        resize: true
+                    },
+                    modes: {
+                        repulse: { distance: 100, duration: 0.4 },
+                        push: { particles_nb: 4 }
+                    }
+                },
+                retina_detect: true
+            });
+        </script>
+
+                    <style>
+    
+        </style>
+
+                                        <nav class="sticky top-0 z-50 glass-effect">
+                        <div class="container mx-auto px-4">
+                            <div class="flex items-center justify-between h-16">
+                                <!-- Logo -->
+                                <a href="#" class="flex-shrink-0 text-white text-xl font-bold">
+                                    WeatherApp
+                                </a>
+                    
+                                <!-- Mobile menu button -->
+                                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                                    </svg>
+                                </button>
+                    
+                                <!-- Desktop Navigation -->
+                                <div class="hidden md:flex items-center space-x-4">
+                                    <a href="#current" class="text-white hover:text-indigo-200 px-3 py-2 rounded-md text-sm font-medium">
+                                        Current Weather
+                                    </a>
+                                    <a href="#forecast" class="text-white hover:text-indigo-200 px-3 py-2 rounded-md text-sm font-medium">
+                                        Forecast
+                                    </a>
+                                    <a href="#map" class="text-white hover:text-indigo-200 px-3 py-2 rounded-md text-sm font-medium">
+                                        Weather Map
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Mobile Navigation Menu -->
+                        <div id="mobile-menu" class="hidden md:hidden">
+                            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 glass-effect">
+                                <a href="#current" class="text-white block px-3 py-2 rounded-md text-base font-medium">
+                                    Current Weather
+                                </a>
+                                <a href="#forecast" class="text-white block px-3 py-2 rounded-md text-base font-medium">
+                                    Forecast
+                                </a>
+                                <a href="#map" class="text-white block px-3 py-2 rounded-md text-base font-medium">
+                                    Weather Map
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <script>
+            // JavaScript to toggle the mobile menu
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+    
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        </script>
+                    <!-- Main Content -->
+                    <main class="container mx-auto px-4 py-8">
+                        <!-- Instruction Section with Enhanced Styling -->
+                        <div
+                            class="instruction-container max-w-4xl mx-auto mt-8 mb-12 px-4">
+                            <div class="relative group">
+                                <!-- Glass Background with Gradient Border -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-xl blur"></div>
+                                <div
+                                    class="relative bg-transparent backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/50 hover:border-indigo-300 transition-all duration-300 transform hover:-translate-y-1">
+                                    <!-- Title with Icon -->
+                                    <div
+                                        class="flex items-center justify-center mb-4 space-x-2">
+                                        <svg
+                                            class="w-6 h-6 text-white animate-bounce"
+                                            fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <h3
+                                            class="text-xl text-white font-bold text-indigo-600">How
+                                            to
+                                            Search</h3>
+
+                                    </div>
+
+                                    <!-- Main Instructions -->
+                                    <div class="space-y-4">
+                                        <p
+                                            class="text-white text-center sm:text-lg md:text-xl leading-relaxed">
+                                            Simply enter a city name in the
+                                            search box and
+                                            click <span
+                                                class="font-semibold text-search">Search</span>
+                                        </p>
+
+                                        <!-- Example Cities with Pills -->
+                                        <div
+                                            class="flex flex-wrap justify-center gap-2 py-2">
+                                            <span
+                                                class="px-3 py-1 text-sm bg-indigo-100 text-indigo-600 rounded-full animate-pulse">London</span>
+                                            <span
+                                                class="px-3 py-1 text-sm bg-blue-100 text-blue-600 rounded-full animate-pulse delay-75">Paris</span>
+                                            <span
+                                                class="px-3 py-1 text-sm bg-purple-100 text-purple-600 rounded-full animate-pulse delay-150">Tokyo</span>
+                                        </div>
+                                        <!-- Search Section -->
+                                        <section id="search"
+                                            class="max-w-2xl mx-auto mb-12">
+                                            <div class="flex gap-4 relative">
+                                                <input id="city-name"
+                                                    type="text"
+                                                    placeholder="Enter city name (e.g., Berlin)"
+                                                    class="w-full px-6 py-3 rounded-lg border-2 border-indigo-100 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 transition-all outline-none">
+                                                <button id="search-button"
+                                                    class="px-8 py-3 bg-indigo-600 text-white rounded-lg hover-scale hover:bg-indigo-700 hover:shadow-md transition-all flex items-center gap-2">
+                                                    <span>Search</span>
+                                                    <div id="search-loading"
+                                                        class="hidden">
+                                                        <svg
+                                                            class="animate-spin h-5 w-5 text-white"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24">
+                                                            <circle
+                                                                class="opacity-25"
+                                                                cx="12" cy="12"
+                                                                r="10"
+                                                                stroke="currentColor"
+                                                                stroke-width="4"></circle>
+                                                            <path
+                                                                class="opacity-75"
+                                                                fill="currentColor"
+                                                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            <!-- Add this after your search input -->
+                                            <div id="error-message"
+                                                class="hidden text-red-500 text-sm mt-2"></div>
+                                            <div id="loading-indicator"
+                                                class="hidden text-center my-4">
+                                                <div
+                                                    class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto"></div>
+                                                <p
+                                                    class="text-gray-600 mt-2">Fetching
+                                                    weather data...</p>
+                                            </div>
+                                        </section>
+                                        <!-- Additional Info -->
+                                        <p
+                                            class="text-white text-sm text-center italic">
+                                            No country codes needed - just type
+                                            and go!
+                                        </p>
+                                    </div>
+
+                                    <!-- Quick Tips -->
+                                    <div
+                                        class="mt-4 pt-4 border-t border-gray-200">
+                                        <ul
+                                            class="text-2xl text-white grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                            <li class="flex items-center">
+                                                <svg
+                                                    class=" w-4 h-4 text-green-500 mr-2"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                Real-time updates
+                                            </li>
+                                            <li class="flex items-center">
+                                                <svg
+                                                    class="w-4 h-4 text-green-500 mr-2"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                Current conditions
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Current Weather Section -->
+                        <section id="current-weather" class="mt-8">
+                            <div
+                                class="relative bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-xl border border-white/20 overflow-hidden group hover:border-white/30 transition-all duration-300">
+                                <!-- Animated Gradient Background -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+
+                                <!-- Glass Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-black/30 backdrop-blur-sm rounded-xl"></div>
+
+                                <!-- Main Content -->
+                                <div
+                                    class="relative z-10 flex flex-col lg:flex-row items-center lg:items-start gap-8">
+                                    <!-- Animation Section with Enhanced Container -->
+                                    <div
+                                        class="relative flex-shrink-0 bg-white/5 rounded-xl p-4 backdrop-blur-md shadow-lg border border-white/10">
+                                        <script
+                                            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+                                            type="module"></script>
+                                        <dotlottie-player
+                                            src="https://lottie.host/0298d77a-5cc6-4fcc-8a86-5cfe89e5b5cf/fj1hYNBiip.lottie"
+                                            background="transparent"
+                                            speed="1"
+                                            style="width: 300px; height: 300px"
+                                            loop
+                                            autoplay>
+                                        </dotlottie-player>
+                                    </div>
+
+                                    <!-- Weather Data Section with Enhanced Cards -->
+                                    <div class="relative z-10 w-full">
+                                        <h2
+                                            class="text-3xl font-bold mb-8 text-white text-center lg:text-left bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                                            Current Weather
+                                            <div
+                                                class="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mt-2 rounded-full"></div>
+                                        </h2>
+
+                                        <div
+                                            class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <!-- Temperature Card -->
+                                            <div class="weather-stat-card">
+                                                <div
+                                                    class="flex items-center justify-between p-4">
+                                                    <div
+                                                        class="flex items-center gap-3">
+                                                        <div
+                                                            class="p-2 bg-blue-500/20 rounded-lg">
+                                                            <svg
+                                                                class="w-6 h-6 text-blue-400"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                                                            </svg>
+                                                        </div>
+                                                        <span
+                                                            class="text-lg font-medium text-gray-100">Temperature</span>
+                                                    </div>
+                                                    <span
+                                                        class="text-2xl font-bold text-white"
+                                                        id="current-temperature">--°C</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Humidity Card -->
+                                            <div class="weather-stat-card">
+                                                <div
+                                                    class="flex items-center justify-between p-4">
+                                                    <div
+                                                        class="flex items-center gap-3">
+                                                        <div
+                                                            class="p-2 bg-teal-500/20 rounded-lg">
+                                                            <svg
+                                                                class="w-6 h-6 text-teal-400"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+                                                            </svg>
+                                                        </div>
+                                                        <span
+                                                            class="text-lg font-medium text-gray-100">Humidity</span>
+                                                    </div>
+                                                    <span
+                                                        class="text-2xl font-bold text-white"
+                                                        id="current-humidity">--%</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Wind Speed Card -->
+                                            <div class="weather-stat-card">
+                                                <div
+                                                    class="flex items-center justify-between p-4">
+                                                    <div
+                                                        class="flex items-center gap-3">
+                                                        <div
+                                                            class="p-2 bg-indigo-500/20 rounded-lg">
+                                                            <svg
+                                                                class="w-6 h-6 text-indigo-400"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                            </svg>
+                                                        </div>
+                                                        <span
+                                                            class="text-lg font-medium text-gray-100">Wind
+                                                            Speed</span>
+                                                    </div>
+                                                    <span
+                                                        class="text-2xl font-bold text-white"
+                                                        id="current-wind-speed">--
+                                                        km/h</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Condition Card -->
+                                            <div class="weather-stat-card">
+                                                <div
+                                                    class="flex items-center justify-between p-4">
+                                                    <div
+                                                        class="flex items-center gap-3">
+                                                        <div
+                                                            class="p-2 bg-purple-500/20 rounded-lg">
+                                                            <svg
+                                                                class="w-6 h-6 text-purple-400"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                                                            </svg>
+                                                        </div>
+                                                        <span
+                                                            class="text-lg font-medium text-gray-100">Condition</span>
+                                                    </div>
+                                                    <span
+                                                        class="text-2xl font-bold text-white"
+                                                        id="current-description">--</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Add these styles -->
+                        <style>
+                    .weather-stat-card {
+                        @apply bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-lg 
+                               hover:border-white/20 hover:bg-white/10 transition-all duration-300 
+                               transform hover:-translate-y-1;
+                    }
+                
+                    .weather-stat-card:nth-child(1) { animation-delay: 0.1s; }
+                    .weather-stat-card:nth-child(2) { animation-delay: 0.2s; }
+                    .weather-stat-card:nth-child(3) { animation-delay: 0.3s; }
+                    .weather-stat-card:nth-child(4) { animation-delay: 0.4s; }
+                
+                    @keyframes slideIn {
+                        from {
+                            opacity: 0;
+                            transform: translateY(20px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                
+                    .weather-stat-card {
+                        animation: slideIn 0.5s ease-out forwards;
+                    }
+                </style>
+                        <!-- Current Weather Section with Glass Effect -->
+                        <section id="current"
+
+                        
+                            class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 p-8 rounded-xl overflow-hidden">
+                            <!-- Replace the existing animated background with this -->
+                            <div class="absolute inset-0 z-0 overflow-hidden">
+                                <!-- Animated Gradient Background -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-indigo-900/90 to-gray-900/95"></div>
+
+                                <!-- Particle Pattern -->
+                                <div class="absolute inset-0"
+                                    id="particles-background"></div>
+
+                                <!-- Animated Wave Pattern -->
+                                <div class="absolute bottom-0 left-0 right-0">
+                                    <svg class="waves"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 24 150 28"
+                                        preserveAspectRatio="none">
+                                        <defs>
+                                            <path id="wave"
+                                                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                                        </defs>
+                                        <g class="parallax">
+                                            <use href="#wave" x="48" y="0"
+                                                fill="rgba(255,255,255,0.04)" />
+                                            <use href="#wave" x="48" y="3"
+                                                fill="rgba(255,255,255,0.03)" />
+                                            <use href="#wave" x="48" y="5"
+                                                fill="rgba(255,255,255,0.02)" />
+                                            <use href="#wave" x="48" y="7"
+                                                fill="rgba(255,255,255,0.01)" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Add this style block to your existing styles -->
+                            <style>
+                    /* Animated Wave Effect */
+                    .waves {
+                        position: relative;
+                        width: 100%;
+                        height: 15vh;
+                        margin-bottom: -7px;
+                        min-height: 100px;
+                        max-height: 150px;
+                    }
+    
+                    .parallax>use {
+                        animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+                    }
+    
+                    .parallax>use:nth-child(1) {
+                        animation-delay: -2s;
+                        animation-duration: 7s;
+                    }
+    
+                    .parallax>use:nth-child(2) {
+                        animation-delay: -3s;
+                        animation-duration: 10s;
+                    }
+    
+                    .parallax>use:nth-child(3) {
+                        animation-delay: -4s;
+                        animation-duration: 13s;
+                    }
+    
+                    .parallax>use:nth-child(4) {
+                        animation-delay: -5s;
+                        animation-duration: 20s;
+                    }
+    
+                    @keyframes move-forever {
+                        0% {
+                            transform: translate3d(-90px, 0, 0);
+                        }
+    
+                        100% {
+                            transform: translate3d(85px, 0, 0);
+                        }
+                    }
+    
+                    /* Particle Animation */
+                    #particles-background {
+                        animation: particle-fade 8s ease-in-out infinite;
+                        background-image:
+                            radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                            radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+                        background-size: 48px 48px;
+                    }
+    
+                    @keyframes particle-fade {
+    
+                        0%,
+                        100% {
+                            opacity: 0.3;
+                        }
+    
+                        50% {
+                            opacity: 0.7;
+                        }
+                    }
+    
+                    /* Add a subtle glow effect */
+                    .glow-effect {
+                        position: absolute;
+                        inset: 0;
+                        background: radial-gradient(circle at 50% 50%,
+                                rgba(99, 102, 241, 0.15) 0%,
+                                rgba(99, 102, 241, 0.05) 50%,
+                                transparent 100%);
+                        filter: blur(40px);
+                        animation: glow 8s ease-in-out infinite;
+                    }
+    
+                    @keyframes glow {
+    
+                        0%,
+                        100% {
+                            opacity: 0.5;
+                        }
+    
+                        50% {
+                            opacity: 0.8;
+                        }
+                    }
+                </style>
+
+                            <!-- Add this script right before the closing body tag -->
+                            <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        // Create floating particles effect
+                        const particlesContainer = document.getElementById('particles-background');
+    
+                        function createParticle() {
+                            const particle = document.createElement('div');
+                            particle.className = 'absolute w-1 h-1 bg-white/10 rounded-full';
+    
+                            // Random position
+                            particle.style.left = Math.random() * 100 + '%';
+                            particle.style.top = Math.random() * 100 + '%';
+    
+                            // Random animation duration
+                            const duration = 3 + Math.random() * 4;
+                            particle.style.animation = `float ${duration}s ease-in-out infinite`;
+    
+                            particlesContainer.appendChild(particle);
+    
+                            // Remove particle after animation
+                            setTimeout(() => particle.remove(), duration * 1000);
+                        }
+    
+                        // Create particles periodically
+                        setInterval(createParticle, 200);
+                    });
+    
+                    // Add this to your existing styles
+                    const styleSheet = document.createElement('style');
+                    styleSheet.textContent = `
+                    @keyframes float {
+                        0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+                        50% { transform: translateY(-20px) scale(1.2); opacity: 0.5; }
+                    }
+                `;
+                    document.head.appendChild(styleSheet);
+                </script>
+
+                            <!-- Current Weather Card -->
+
+                            <!-- Current Weather Card -->
+                            <!-- Add this after the Current Weather Section -->
+                            <section id="forecast" class="mb-12">
+                                <div
+                                    class="relative bg-white/30 backdrop-blur-md rounded-xl p-8 shadow-lg border border-white/20">
+                                    <div
+                                        class="absolute inset-0 bg-black/30 rounded-xl"></div>
+
+                                    <div class="relative z-10">
+                                        <h2
+                                            class="text-3xl font-bold mb-6 text-white text-center">7-Day
+                                            Forecast Search Results</h2>
+                                        <script
+                                            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+                                            type="module"></script>
+                                        <dotlottie-player
+                                            src="https://lottie.host/677d397e-72c4-4faf-88d7-596e2249b034/SKcOD1ep44.lottie"
+                                            background="transparent" speed="1"
+                                            style="width: 300px; height: 300px"
+                                            loop
+                                            autoplay></dotlottie-player>
+                                        <div class="relative">
+                                            <button
+                                                class="scroll-left-btn absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white z-10">
+                                                <svg class="w-6 h-6" fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                            </button>
+
+                                            <div
+                                                class="overflow-x-auto scrollbar-hide snap-x flex gap-4 py-4">
+                                                <!-- Forecast cards will be added here dynamically -->
+                                            </div>
+
+                                            <button
+                                                class="scroll-right-btn absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white z-10">
+                                                <svg class="w-6 h-6" fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Weather Suggestions for Specific Areas -->
+                            <div
+                                class="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-8 shadow-lg border border-gray-700 reveal-animation z-10">
+                                <div
+                                    class="absolute inset-0 bg-black/30 rounded-xl backdrop-blur-sm"></div>
+                                <div
+                                    class=" flex items-center justify-center mb-6 w-full">
+                                    <div
+                                        class="m relative w-[300px] h-[200px] flex items-center justify-center">
+                                        <dotlottie-player
+                                            src="https://lottie.host/f70172c8-e5eb-4be5-9f9b-135c623a10b9/UgElVHQsje.lottie"
+                                            background="transparent"
+                                            speed="1"
+                                            style="width: 100%; height: 100%;"
+                                            loop
+                                            autoplay>
+                                        </dotlottie-player>
+                                    </div>
+                                </div>
+                                <!-- Animated Background Pattern -->
+                                <div class="absolute inset-0 opacity-10">
+                                    <div class="weather-pattern"></div>
+                                </div>
+
+                                <div class="relative z-10">
+                                    <!-- Animated Section Title -->
+                                    <h2
+                                        class="text-3xl font-bold mb-6 text-white text-center animate-fade-in">
+                                        Weather Suggestions For Other Place Of
+                                        Interest
+                                        <div
+                                            class="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-2 rounded-full"></div>
+                                    </h2>
+
+                                    <!-- Animation Section with Fade In -->
+                                    <!-- Animation Section with Centered Lottie -->
+
+                                    <!-- Weather Suggestions Cards with Staggered Animation -->
+                                    <div id="weather-suggestions"
+                                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                        <!-- Cards will be dynamically added here -->
+                                    </div>
+                                    <div id="weather-modal"
+                                        class="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center hidden z-50">
+                                        <div
+                                            class="bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-xl border border-white/20 w-11/12 max-w-lg relative">
+                                            <button
+                                                class="absolute top-4 right-4 text-white text-xl"
+                                                onclick="closeWeatherModal()">×</button>
+                                            <h2 id="modal-title"
+                                                class="text-2xl font-bold text-white mb-4">City
+                                                Name</h2>
+                                            <div
+                                                class="flex items-center gap-4 mb-4">
+                                                <img id="modal-icon" src
+                                                    alt="Weather Icon"
+                                                    class="w-16 h-16">
+                                                <p id="modal-temp"
+                                                    class="text-4xl font-bold text-white">--°C</p>
+                                            </div>
+                                            <p id="modal-condition"
+                                                class="text-lg text-gray-300 mb-2">Condition:
+                                                --</p>
+                                            <p id="modal-wind"
+                                                class="text-lg text-gray-300 mb-2">Wind
+                                                Speed: --</p>
+                                            <p id="modal-humidity"
+                                                class="text-lg text-gray-300 mb-2">Humidity:
+                                                --</p>
+                                            <p id="modal-description"
+                                                class="text-sm text-gray-400">--</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Weather Modal -->
+                            <style>
+                                /* Weather Card Styles */
+                                .weather-card {
+                                    position: relative;
+                                    overflow: hidden;
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                }
+                            
+                                .weather-card:hover {
+                                    transform: translateY(-5px);
+                                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                                }
+                            
+                                /* Modal Styles */
+                                #weather-modal {
+                                    animation: fadeIn 0.3s ease;
+                                }
+                            
+                                @keyframes fadeIn {
+                                    from {
+                                        opacity: 0;
+                                    }
+                                    to {
+                                        opacity: 1;
+                                    }
+                                }
+                            </style>
+                            <!-- Add these styles to your existing <style> tag -->
+                            <style>
+                        /* Staggered fade-in animation for cards */
+                        .weather-card {
+                            opacity: 0;
+                            transform: translateY(20px);
+                            animation: cardFadeIn 0.5s ease forwards;
+                        }
+                    
+                        .weather-card:nth-child(1) { animation-delay: 0.2s; }
+                        .weather-card:nth-child(2) { animation-delay: 0.4s; }
+                        .weather-card:nth-child(3) { animation-delay: 0.6s; }
+                    
+                        @keyframes cardFadeIn {
+                            to {
+                                opacity: 1;
+                                transform: translateY(0);
+                            }
+                        }
+                    
+                        /* Floating animation for the lottie player */
+                        .animate-float {
+                            animation: float 6s ease-in-out infinite;
+                        }
+                    
+                        @keyframes float {
+                            0%, 100% { transform: translateY(0); }
+                            50% { transform: translateY(-10px); }
+                        }
+                    
+                        /* Weather pattern background animation */
+                        .weather-pattern {
+                            background-image: 
+                                radial-gradient(circle at 100% 100%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                                radial-gradient(circle at 0% 0%, rgba(255,255,255,0.1) 1px, transparent 1px);
+                            background-size: 40px 40px;
+                            width: 100%;
+                            height: 100%;
+                            animation: patternMove 20s linear infinite;
+                        }
+                    
+                        @keyframes patternMove {
+                            0% { background-position: 0 0; }
+                            100% { background-position: 40px 40px; }
+                        }
+                    
+                        /* Enhanced hover effects for cards */
+                        .weather-card {
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            position: relative;
+                        }
+                    
+                        .weather-card::before {
+                            content: '';
+                            position: absolute;
+                            inset: 0;
+                            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+                            opacity: 0;
+                            transition: opacity 0.3s ease;
+                        }
+                    
+                        .weather-card:hover {
+                            transform: translateY(-5px) scale(1.02);
+                            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+                        }
+                    
+                        .weather-card:hover::before {
+                            opacity: 1;
+                        }
+                    </style>
+
+                            <!-- Add this JavaScript to create dynamic weather cards -->
+                            <script>
+                        function createWeatherCard(city, temp, condition) {
+                            return `
+                                <div class="weather-card bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-md border border-gray-700">
+                                    <h3 class="text-lg font-semibold mb-2 text-white">${city}</h3>
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-gray-300">${temp}°C</p>
+                                        <p class="text-gray-300">${condition}</p>
+                                    </div>
+                                    <div class="mt-4 h-1 w-full bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full"></div>
+                                </div>
+                            `;
+                        }
+                    
+                        // Example usage:
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const container = document.getElementById('weather-suggestions');
+                            const cities = [
+                                { city: 'Amsterdam', temp: 15, condition: 'Cloudy' },
+                                { city: 'Berlin', temp: 18, condition: 'Sunny' },
+                                { city: 'London', temp: 12, condition: 'Rainy' }
+                            ];
+                    
+                            container.innerHTML = '';
+                            cities.forEach(({ city, temp, condition }) => {
+                                container.insertAdjacentHTML('beforeend', createWeatherCard(city, temp, condition));
+                            });
+                        });
+                    </script>
+                        </section>
+
+                        <!-- Forecast Section with Enhanced Glass Effect -->
+
+                        <!-- Add this script for smooth scrolling -->
+                        <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const container = document.querySelector('.scrollbar-hide');
+                    const leftBtn = document.querySelector('.scroll-left-btn');
+                    const rightBtn = document.querySelector('.scroll-right-btn');
+                    const scrollAmount = 300;
+    
+                    if (leftBtn && rightBtn && container) {
+                        leftBtn.addEventListener('click', () => {
+                            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                        });
+    
+                        rightBtn.addEventListener('click', () => {
+                            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        });
+    
+                        // Show/hide buttons based on scroll position
+                        container.addEventListener('scroll', () => {
+                            leftBtn.style.opacity = container.scrollLeft > 0 ? '1' : '0.5';
+                            rightBtn.style.opacity =
+                                container.scrollLeft < container.scrollWidth - container.clientWidth ? '1' : '0.5';
+                        });
+                    }
+                });
+            </script>
+                        <!-- Add these styles to your existing <style> tag -->
+                        <style>
+                /* Improved scrollbar hiding */
+                .scrollbar-hide {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+    
+                .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
+                }
+    
+                /* Enhanced smooth scrolling */
+                .overflow-x-auto {
+                    scroll-behavior: smooth;
+                    -webkit-overflow-scrolling: touch;
+                }
+    
+                /* Improved card hover animation */
+                .hover\:scale-105:hover {
+                    transform: scale(1.05);
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                }
+    
+                /* Add scroll snap */
+                .snap-x {
+                    scroll-snap-type: x mandatory;
+                }
+    
+                .snap-center {
+                    scroll-snap-align: center;
+                }
+            </style>
+
+                        <!-- Add this script for the scroll buttons -->
+                        <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const container = document.querySelector('.overflow-x-auto');
+                    const leftBtn = document.querySelector('.scroll-left-btn');
+                    const rightBtn = document.querySelector('.scroll-right-btn');
+    
+                    leftBtn?.addEventListener('click', () => {
+                        container.scrollBy({ left: -300, behavior: 'smooth' });
+                    });
+    
+                    rightBtn?.addEventListener('click', () => {
+                        container.scrollBy({ left: 300, behavior: 'smooth' });
+                    });
+                });
+            </script>
+
+                    </div>
+                </main>
+            </div>
+            <!-- Hero Section -->
+            <!-- Add this new section in your HTML -->
+            <section id="weather-map" class="mb-12">
+                <div
+                    class="relative bg-white/10 backdrop-blur-lg rounded-xl p-6 shadow-xl border border-white/20 overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-blue-500/20 opacity-50"></div>
+
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-bold text-white mb-4">Live
+                            Weather Map</h2>
+
+                        <!-- Map Controls -->
+                        <div class="flex gap-4 mb-4">
+                            <select id="map-layer"
+                                class="bg-transparentbackdrop-blur-md text-black rounded-lg px-4 py-2 border border-white/20">
+                                <option value="temp_new">Temperature</option>
+                                <option
+                                    value="precipitation_new">Precipitation</option>
+                                <option value="wind_new">Wind Speed</option>
+                                <option value="clouds_new">Clouds</option>
+                            </select>
+                        </div>
+
+                        <!-- Map Container -->
+                        <div id="map"
+                            class="w-full h-[500px] rounded-lg overflow-hidden"></div>
+                    </div>
+                </div>
+            </section>
+            <style>
+    /* Map container styles */
+    #map {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    #map:hover {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Map controls */
+    .map-controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Custom map markers */
+    .temp-marker {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: white;
+        font-weight: bold;
+    }
+</style>
+            <!-- Footer with Enhanced Readability -->
+            <footer id="footer"
+                class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white py-16">
+                <div class="container mx-auto px-4 max-w-6xl">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        <!-- Brand Section -->
+                        <div class="text-center md:text-left space-y-4">
+                            <h2
+                                class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                                WeatherApp</h2>
+                            <p
+                                class="text-blue-100 text-sm max-w-sm mx-auto md:mx-0">
+                                Get accurate and up-to-date weather forecasts
+                                for any location worldwide.
+                            </p>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="text-center md:text-left">
+                            <h3
+                                class="text-xl font-semibold mb-4 text-blue-100">Quick
+                                Links</h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a href="#"
+                                        class="text-blue-100 hover:text-yellow-300 transition-colors flex items-center justify-center md:justify-start">
+                                        <svg class="w-4 h-4 mr-2"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path
+                                                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                            </path>
+                                        </svg>
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-blue-100 hover:text-yellow-300 transition-colors flex items-center justify-center md:justify-start">
+                                        <svg class="w-4 h-4 mr-2"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2-1a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1H6z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                        Terms of Service
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-blue-100 hover:text-yellow-300 transition-colors flex items-center justify-center md:justify-start">
+                                        <svg class="w-4 h-4 mr-2"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path
+                                                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                            </path>
+                                            <path
+                                                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                        </svg>
+                                        Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Did You Know Section -->
+                        <div
+                            class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/10">
+                            <div
+                                class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                                <div
+                                    class="w-16 h-16 flex-shrink-0 animate-spin-slow">
+                                    <img src="Assests/global.svg"
+                                        alt="Earth Icon" class="w-full h-full">
+                                </div>
+                                <div class="text-center sm:text-left">
+                                    <h3
+                                        class="text-lg font-semibold text-yellow-300 mb-2">Did
+                                        You Know?</h3>
+                                    <p
+                                        class="text-sm text-blue-100 leading-relaxed">
+                                        The Earth's atmosphere contains 78%
+                                        nitrogen, 21% oxygen, and traces of
+                                        other gases.
+                                        It
+                                        plays a vital role in regulating the
+                                        planet's temperature!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links & Copyright -->
+                    <div class="mt-12 pt-8 border-t border-white/10">
+                        <div class="flex flex-col items-center space-y-4">
+                            <div class="flex space-x-6">
+                                <a href="#"
+                                    class="text-blue-100 hover:text-yellow-300 transition-transform hover:scale-110">
+                                    <svg class="w-6 h-6" fill="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                    </svg>
+                                </a>
+                                <a href="#"
+                                    class="text-blue-100 hover:text-yellow-300 transition-transform hover:scale-110">
+                                    <svg class="w-6 h-6" fill="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <p class="text-sm text-blue-100/80">
+                                © 2024 WeatherApp. All rights reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- Add to your existing styles -->
+            <style>
+            @keyframes spin-slow {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .animate-spin-slow {
+                animation: spin-slow 20s linear infinite;
+            }
+        </style>
+
+            <script src="https://kit.fontawesome.com/a076d05399.js"
+                crossorigin="anonymous"></script>
+            <script src="js/main.js"></script>
+            <!-- Add this at the end of your body tag, before closing </body> -->
+            <script>
+                // Wait for all resources to load
+                window.addEventListener('load', function() {
+                    // Check if required elements exist before accessing them
+                    const mapElement = document.getElementById('map');
+                    const particlesElement = document.getElementById('tsparticles');
+                    
+                    if (typeof ol !== 'undefined' && mapElement) {
+                        initWeatherMap();
+                    }
+                    
+                    if (typeof tsParticles !== 'undefined' && particlesElement) {
+                        initParticles();
+                    }
+                });
+            </script>
+        </body>
+                <!-- Add this at the end of your body tag, before closing </body> -->
+        <script>
+            // Wait for all resources to load
+            window.addEventListener('load', function() {
+                // Check if required elements exist before accessing them
+                const mapElement = document.getElementById('map');
+                const particlesElement = document.getElementById('tsparticles');
+                
+                if (typeof ol !== 'undefined' && mapElement) {
+                    initWeatherMap();
+                }
+                
+                if (typeof tsParticles !== 'undefined' && particlesElement) {
+                    initParticles();
+                }
+            });
+        </script>
+        
+    </html>
